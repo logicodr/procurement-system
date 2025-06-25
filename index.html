@@ -15,11 +15,11 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: #f8fafc;
             color: #1e293b;
-            line-height: 1.6;
+            line-height: 1.5;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -27,8 +27,8 @@
         .header {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .header-content {
@@ -41,49 +41,50 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
         }
         
         .cart-summary {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             display: flex;
             align-items: center;
             gap: 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
         }
         
         .shop-container {
             display: grid;
-            grid-template-columns: 280px 1fr 320px;
-            gap: 2rem;
-            padding: 2rem 0;
-            min-height: calc(100vh - 120px);
+            grid-template-columns: 280px 1fr 300px;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            min-height: calc(100vh - 100px);
         }
         
         .filters-sidebar {
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 1.5rem;
             height: fit-content;
             position: sticky;
-            top: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            top: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
         }
         
         .filter-section {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .filter-title {
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #374151;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -91,10 +92,11 @@
         .filter-option {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 0.5rem 0;
+            gap: 6px;
+            padding: 0.4rem 0;
             cursor: pointer;
             transition: color 0.2s;
+            font-size: 0.9rem;
         }
         
         .filter-option:hover {
@@ -102,17 +104,17 @@
         }
         
         .filter-checkbox {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             accent-color: #3b82f6;
         }
         
         .search-bar {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 0.9rem;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.85rem;
             transition: border-color 0.2s;
             background: #f8fafc;
         }
@@ -125,17 +127,17 @@
         
         .products-main {
             background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
         }
         
         .products-header {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
             gap: 1rem;
         }
@@ -147,12 +149,13 @@
         }
         
         .view-btn {
-            padding: 0.5rem;
+            padding: 0.4rem 0.8rem;
             border: 1px solid #e2e8f0;
             background: white;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s;
+            font-size: 0.8rem;
         }
         
         .view-btn.active {
@@ -161,59 +164,116 @@
             border-color: #3b82f6;
         }
         
-        .sort-select {
-            padding: 0.5rem 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            background: white;
-            cursor: pointer;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .product-card {
-            background: white;
-            border: 2px solid #f1f5f9;
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-        
-        .product-card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-card.selected {
-            border-color: #10b981;
-            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
-        }
-        
-        .product-image {
-            height: 120px;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        .bulk-actions-top {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            position: relative;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
         
-        .product-badge {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
+        .bulk-btn {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .bulk-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+        }
+        
+        .bulk-btn.primary {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+        
+        .bulk-btn.primary:hover {
+            background: #2563eb;
+        }
+        
+        .sort-select {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        
+        .products-table th {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem 0.5rem;
+            text-align: left;
             font-weight: 600;
+            color: #374151;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .products-table td {
+            border: 1px solid #f1f5f9;
+            padding: 0.6rem 0.5rem;
+            vertical-align: middle;
+            transition: background-color 0.2s;
+        }
+        
+        .products-table tbody tr {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .products-table tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .products-table tbody tr.selected {
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+            border-left: 3px solid #10b981;
+        }
+        
+        .product-checkbox {
+            width: 16px;
+            height: 16px;
+            accent-color: #10b981;
+        }
+        
+        .product-code {
+            font-weight: 600;
+            color: #374151;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.8rem;
+        }
+        
+        .product-name {
+            color: #1f2937;
+            font-weight: 500;
+            max-width: 300px;
+            line-height: 1.3;
+        }
+        
+        .supplier-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-align: center;
         }
         
         .badge-maun {
@@ -226,133 +286,53 @@
             color: #92400e;
         }
         
-        .product-content {
-            padding: 1.5rem;
-        }
-        
-        .product-code {
-            font-size: 0.75rem;
+        .price-cell {
+            text-align: right;
             font-weight: 600;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-        
-        .product-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #111827;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-            min-height: 2.8rem;
-        }
-        
-        .product-specs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .spec-item {
-            text-align: center;
-            padding: 0.75rem;
-            background: #f8fafc;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .spec-value {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #3b82f6;
-        }
-        
-        .spec-label {
-            font-size: 0.75rem;
-            color: #6b7280;
-            margin-top: 0.25rem;
-        }
-        
-        .product-price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .price-info {
-            font-size: 0.9rem;
-            color: #6b7280;
-        }
-        
-        .price-value {
-            font-size: 1.1rem;
-            font-weight: 700;
             color: #059669;
+            font-family: 'Monaco', 'Menlo', monospace;
         }
         
-        .product-actions {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-        
-        .select-checkbox {
-            width: 20px;
-            height: 20px;
-            accent-color: #10b981;
-        }
-        
-        .quick-add-btn {
-            flex: 1;
-            padding: 0.75rem;
-            background: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        
-        .quick-add-btn:hover {
-            background: #2563eb;
+        .numeric-cell {
+            text-align: right;
+            font-weight: 500;
+            color: #374151;
+            font-family: 'Monaco', 'Menlo', monospace;
         }
         
         .cart-sidebar {
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 1.5rem;
             height: fit-content;
             position: sticky;
-            top: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            top: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
         }
         
         .cart-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
+            gap: 8px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
             border-bottom: 2px solid #f1f5f9;
         }
         
         .cart-items {
-            max-height: 400px;
+            max-height: 300px;
             overflow-y: auto;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .cart-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
+            align-items: flex-start;
+            padding: 0.5rem 0;
             border-bottom: 1px solid #f1f5f9;
+            font-size: 0.8rem;
         }
         
         .cart-item:last-child {
@@ -361,56 +341,88 @@
         
         .cart-item-info {
             flex: 1;
+            min-width: 0;
         }
         
         .cart-item-code {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #6b7280;
             font-weight: 600;
+            font-family: 'Monaco', 'Menlo', monospace;
         }
         
         .cart-item-name {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #374151;
-            margin-top: 0.25rem;
+            margin-top: 0.2rem;
+            line-height: 1.3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .cart-item-qty {
+            font-size: 0.7rem;
+            color: #10b981;
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+        
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.2rem;
+            margin-left: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .remove-btn:hover {
+            background: #fef2f2;
         }
         
         .cart-summary-section {
             background: #f8fafc;
             padding: 1rem;
-            border-radius: 12px;
+            border-radius: 8px;
             margin-bottom: 1rem;
+            font-size: 0.8rem;
         }
         
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         
         .summary-total {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             padding-top: 0.5rem;
             border-top: 2px solid #e2e8f0;
         }
         
         .checkout-btn {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: transform 0.2s;
             margin-bottom: 0.5rem;
         }
         
         .checkout-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
         
         .checkout-btn:disabled {
@@ -419,67 +431,46 @@
             transform: none;
         }
         
-        .bulk-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .bulk-btn {
-            flex: 1;
-            padding: 0.5rem;
-            border: 1px solid #e2e8f0;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.2s;
-        }
-        
-        .bulk-btn:hover {
-            background: #f8fafc;
-            border-color: #3b82f6;
-        }
-        
         .results-info {
             color: #6b7280;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
         }
         
         .empty-cart {
             text-align: center;
             color: #6b7280;
             font-style: italic;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
+            font-size: 0.8rem;
         }
         
-        .quantity-input {
-            width: 60px;
-            padding: 0.25rem 0.5rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 4px;
-            text-align: center;
+        .selection-info {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
             font-size: 0.8rem;
+            color: #1e40af;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
         
         @media (max-width: 1200px) {
             .shop-container {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             
             .filters-sidebar,
             .cart-sidebar {
                 position: static;
-            }
-            
-            .filters-sidebar {
                 order: 2;
-            }
-            
-            .cart-sidebar {
-                order: 3;
             }
             
             .products-main {
@@ -488,19 +479,28 @@
         }
         
         @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .products-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
             
+            .bulk-actions-top {
+                flex-direction: column;
+            }
+            
             .header-content {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.5rem;
                 text-align: center;
+            }
+            
+            .products-table {
+                font-size: 0.75rem;
+            }
+            
+            .products-table th,
+            .products-table td {
+                padding: 0.4rem 0.3rem;
             }
         }
     </style>
@@ -545,23 +545,14 @@
                 </div>
                 
                 <div class="filter-section">
-                    <div class="filter-title">Product Categories</div>
+                    <div class="filter-title">Categories</div>
                     <div class="filter-option">
                         <input type="checkbox" class="filter-checkbox" id="filter-bakery" checked>
-                        <label for="filter-bakery">Bakery Products</label>
+                        <label for="filter-bakery">Bakery</label>
                     </div>
                     <div class="filter-option">
                         <input type="checkbox" class="filter-checkbox" id="filter-pastry" checked>
                         <label for="filter-pastry">Pastries</label>
-                    </div>
-                </div>
-                
-                <div class="filter-section">
-                    <div class="filter-title">Quick Actions</div>
-                    <div class="bulk-actions" style="flex-direction: column;">
-                        <button class="bulk-btn" onclick="selectAll()">Select All</button>
-                        <button class="bulk-btn" onclick="clearSelection()">Clear Selection</button>
-                        <button class="bulk-btn" onclick="selectBySupplier('Maun')">Select Maun</button>
                     </div>
                 </div>
             </div>
@@ -570,32 +561,66 @@
             <div class="products-main">
                 <div class="products-header">
                     <div>
-                        <h2 style="margin-bottom: 0.5rem;">Product Catalog</h2>
+                        <h2 style="margin-bottom: 0.25rem; font-size: 1.4rem;">Product Catalog</h2>
                         <div class="results-info" id="results-info">Showing 9 products</div>
                     </div>
                     <div class="view-controls">
-                        <span style="margin-right: 1rem; font-size: 0.9rem; color: #6b7280;">Sort by:</span>
+                        <span style="margin-right: 0.5rem; font-size: 0.8rem; color: #6b7280;">Sort:</span>
                         <select class="sort-select" id="sort-select">
-                            <option value="name">Product Name</option>
-                            <option value="code">Product Code</option>
+                            <option value="name">Name</option>
+                            <option value="code">Code</option>
                             <option value="supplier">Supplier</option>
                             <option value="pcs">PCS Total</option>
+                            <option value="price">Price</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="products-grid" id="products-grid">
-                    <!-- Products will be rendered here -->
+                <div class="bulk-actions-top">
+                    <button class="bulk-btn" onclick="selectAll()">✓ Select All</button>
+                    <button class="bulk-btn" onclick="clearSelection()">✗ Clear All</button>
+                    <button class="bulk-btn" onclick="selectBySupplier('Maun')">Maun Only</button>
+                    <button class="bulk-btn" onclick="selectBySupplier('Simit Sarayi')">Simit Only</button>
+                    <button class="bulk-btn primary" onclick="selectRange()" id="range-btn" style="display: none;">Select Range</button>
+                </div>
+
+                <div id="selection-info" class="selection-info" style="display: none;">
+                    <strong id="selection-count">0</strong> products selected • 
+                    Click and drag to select multiple items, or use Shift+Click for range selection
+                </div>
+
+                <div class="table-container">
+                    <table class="products-table" id="products-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40px;">
+                                    <input type="checkbox" class="product-checkbox" id="select-all-checkbox" onclick="toggleSelectAll()">
+                                </th>
+                                <th style="width: 100px;">Code</th>
+                                <th>Product Name</th>
+                                <th style="width: 80px;">Coli</th>
+                                <th style="width: 90px;">PCS Total</th>
+                                <th style="width: 80px;">PCS/KRT</th>
+                                <th style="width: 110px;">Supplier</th>
+                                <th style="width: 100px;">Unit Price</th>
+                                <th style="width: 110px;">Total Value</th>
+                                <th style="width: 80px;">Supplier Code</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-tbody">
+                            <!-- Products will be rendered here -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
             <!-- Cart Sidebar -->
             <div class="cart-sidebar">
                 <div class="cart-header">
-                    <span style="font-size: 1.5rem;">🛒</span>
+                    <span style="font-size: 1.2rem;">🛒</span>
                     <div>
-                        <h3>Selected Items</h3>
-                        <div style="font-size: 0.8rem; color: #6b7280;" id="cart-subtitle">Ready for import</div>
+                        <h3 style="font-size: 1rem;">Selected Items</h3>
+                        <div style="font-size: 0.7rem; color: #6b7280;" id="cart-subtitle">Ready for import</div>
                     </div>
                 </div>
 
@@ -607,7 +632,7 @@
 
                 <div class="cart-summary-section" id="cart-summary" style="display: none;">
                     <div class="summary-row">
-                        <span>Selected Items:</span>
+                        <span>Items:</span>
                         <span id="summary-items">0</span>
                     </div>
                     <div class="summary-row">
@@ -615,11 +640,11 @@
                         <span id="summary-pcs">0</span>
                     </div>
                     <div class="summary-row">
-                        <span>Estimated Value:</span>
-                        <span id="summary-value">€0.00</span>
+                        <span>Avg. Price:</span>
+                        <span id="summary-avg">€0.000</span>
                     </div>
                     <div class="summary-row summary-total">
-                        <span>Import Total:</span>
+                        <span>Total Value:</span>
                         <span id="summary-total">€0.00</span>
                     </div>
                 </div>
@@ -628,216 +653,155 @@
                     Create Import Order
                 </button>
                 
-                <div style="text-align: center; font-size: 0.8rem; color: #6b7280;">
-                    Or save as task for later processing
+                <div style="text-align: center; font-size: 0.7rem; color: #6b7280; margin-top: 0.5rem;">
+                    💡 Tip: Use Shift+Click for range selection
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Sample product data with pricing
+        // Sample product data
         const products = [
-            { 
-                id: 1, 
-                productCode: 'TB-1001', 
-                name: 'Simit (cig simit)', 
-                coliTotal: 1, 
-                pcsTotal: 4800, 
-                pcsKrt: 100, 
-                supplier: 'Maun', 
-                supplierCode: '', 
-                selected: false,
-                price: 0.05,
-                category: 'bakery',
-                emoji: '🥯'
-            },
-            { 
-                id: 2, 
-                productCode: 'TB-1004', 
-                name: 'Acma Oliven (Zeytinli Acma Dökme)', 
-                coliTotal: 1, 
-                pcsTotal: 5120, 
-                pcsKrt: 80, 
-                supplier: 'Simit Sarayi', 
-                supplierCode: '100006434', 
-                selected: false,
-                price: 0.08,
-                category: 'pastry',
-                emoji: '🥟'
-            },
-            { 
-                id: 3, 
-                productCode: 'TB-100', 
-                name: 'Croissant 90g', 
-                coliTotal: 1, 
-                pcsTotal: 6400, 
-                pcsKrt: 100, 
-                supplier: 'Simit Sarayi', 
-                supplierCode: '100005720', 
-                selected: false,
-                price: 0.12,
-                category: 'pastry',
-                emoji: '🥐'
-            },
-            { 
-                id: 4, 
-                productCode: 'TB-1010', 
-                name: 'Sesamring/Simit gebacken (Simit tam pismiş)', 
-                coliTotal: 0.5, 
-                pcsTotal: 1200, 
-                pcsKrt: 50, 
-                supplier: 'Maun', 
-                supplierCode: '', 
-                selected: false,
-                price: 0.06,
-                category: 'bakery',
-                emoji: '🥯'
-            },
-            { 
-                id: 5, 
-                productCode: 'TB-1020', 
-                name: 'Acma Gebacken (Acma Tam Pismiş)', 
-                coliTotal: 1, 
-                pcsTotal: 1440, 
-                pcsKrt: 30, 
-                supplier: 'Maun', 
-                supplierCode: '', 
-                selected: false,
-                price: 0.07,
-                category: 'pastry',
-                emoji: '🥟'
-            },
-            { 
-                id: 6, 
-                productCode: 'TB-1021', 
-                name: 'Acma Oro gebacken (Yagli Acma tam pismiş)', 
-                coliTotal: 1, 
-                pcsTotal: 1728, 
-                pcsKrt: 36, 
-                supplier: 'Maun', 
-                supplierCode: '', 
-                selected: false,
-                price: 0.09,
-                category: 'pastry',
-                emoji: '🥟'
-            },
-            { 
-                id: 7, 
-                productCode: 'TB-1022', 
-                name: 'Acma Oliven (Zeytinli Acma Dökme)', 
-                coliTotal: 1, 
-                pcsTotal: 5120, 
-                pcsKrt: 80, 
-                supplier: 'Simit Sarayi', 
-                supplierCode: '100006434', 
-                selected: false,
-                price: 0.08,
-                category: 'pastry',
-                emoji: '🥟'
-            },
-            { 
-                id: 8, 
-                productCode: 'TB-1030', 
-                name: 'Pogaca /Käsetasche gebacken (Pogaca tam pismiş)', 
-                coliTotal: 0.4, 
-                pcsTotal: 768, 
-                pcsKrt: 40, 
-                supplier: 'Maun', 
-                supplierCode: '', 
-                selected: false,
-                price: 0.10,
-                category: 'pastry',
-                emoji: '🧀'
-            },
-            { 
-                id: 9, 
-                productCode: 'TB-1031', 
-                name: 'Pogaca /Käsetasche gebacken (Pogaca pismiş Dökme)', 
-                coliTotal: 1, 
-                pcsTotal: 8000, 
-                pcsKrt: 125, 
-                supplier: 'Simit Sarayi', 
-                supplierCode: '100010015', 
-                selected: false,
-                price: 0.09,
-                category: 'pastry',
-                emoji: '🧀'
-            }
+            { id: 1, productCode: 'TB-1001', name: 'Simit (cig simit)', coliTotal: 1, pcsTotal: 4800, pcsKrt: 100, supplier: 'Maun', supplierCode: '', selected: false, price: 0.048, category: 'bakery' },
+            { id: 2, productCode: 'TB-1004', name: 'Acma Oliven (Zeytinli Acma Dökme)', coliTotal: 1, pcsTotal: 5120, pcsKrt: 80, supplier: 'Simit Sarayi', supplierCode: '100006434', selected: false, price: 0.072, category: 'pastry' },
+            { id: 3, productCode: 'TB-100', name: 'Croissant 90g', coliTotal: 1, pcsTotal: 6400, pcsKrt: 100, supplier: 'Simit Sarayi', supplierCode: '100005720', selected: false, price: 0.095, category: 'pastry' },
+            { id: 4, productCode: 'TB-1010', name: 'Sesamring/Simit gebacken (Simit tam pismiş)', coliTotal: 0.5, pcsTotal: 1200, pcsKrt: 50, supplier: 'Maun', supplierCode: '', selected: false, price: 0.055, category: 'bakery' },
+            { id: 5, productCode: 'TB-1020', name: 'Acma Gebacken (Acma Tam Pismiş)', coliTotal: 1, pcsTotal: 1440, pcsKrt: 30, supplier: 'Maun', supplierCode: '', selected: false, price: 0.063, category: 'pastry' },
+            { id: 6, productCode: 'TB-1021', name: 'Acma Oro gebacken (Yagli Acma tam pismiş)', coliTotal: 1, pcsTotal: 1728, pcsKrt: 36, supplier: 'Maun', supplierCode: '', selected: false, price: 0.078, category: 'pastry' },
+            { id: 7, productCode: 'TB-1022', name: 'Acma Oliven (Zeytinli Acma Dökme)', coliTotal: 1, pcsTotal: 5120, pcsKrt: 80, supplier: 'Simit Sarayi', supplierCode: '100006434', selected: false, price: 0.072, category: 'pastry' },
+            { id: 8, productCode: 'TB-1030', name: 'Pogaca /Käsetasche gebacken (Pogaca tam pismiş)', coliTotal: 0.4, pcsTotal: 768, pcsKrt: 40, supplier: 'Maun', supplierCode: '', selected: false, price: 0.089, category: 'pastry' },
+            { id: 9, productCode: 'TB-1031', name: 'Pogaca /Käsetasche gebacken (Pogaca pismiş Dökme)', coliTotal: 1, pcsTotal: 8000, pcsKrt: 125, supplier: 'Simit Sarayi', supplierCode: '100010015', selected: false, price: 0.081, category: 'pastry' }
         ];
 
         let filteredProducts = [...products];
+        let lastSelectedIndex = -1;
+        let shiftKeyPressed = false;
+
+        // Track keyboard state
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Shift') shiftKeyPressed = true;
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.key === 'Shift') shiftKeyPressed = false;
+        });
 
         function renderProducts() {
-            const grid = document.getElementById('products-grid');
+            const tbody = document.getElementById('products-tbody');
             
             if (filteredProducts.length === 0) {
-                grid.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #6b7280;">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">📦</div>
-                        <h3>No products found</h3>
-                        <p>Try adjusting your filters or search term</p>
-                    </div>
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="10" style="text-align: center; padding: 3rem; color: #6b7280;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📦</div>
+                            <div>No products found</div>
+                            <div style="font-size: 0.8rem; margin-top: 0.5rem;">Try adjusting your filters or search term</div>
+                        </td>
+                    </tr>
                 `;
                 return;
             }
 
-            grid.innerHTML = filteredProducts.map(product => {
+            tbody.innerHTML = filteredProducts.map((product, index) => {
                 const totalValue = product.pcsTotal * product.price;
                 const supplierClass = product.supplier === 'Maun' ? 'badge-maun' : 'badge-simit';
                 
                 return `
-                    <div class="product-card ${product.selected ? 'selected' : ''}" onclick="toggleProduct(${product.id})">
-                        <div class="product-image">
-                            <span style="font-size: 3rem;">${product.emoji}</span>
-                            <div class="product-badge ${supplierClass}">
-                                ${product.supplier}
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="product-code">${product.productCode}</div>
-                            <div class="product-name">${product.name}</div>
-                            
-                            <div class="product-specs">
-                                <div class="spec-item">
-                                    <div class="spec-value">${product.pcsTotal.toLocaleString()}</div>
-                                    <div class="spec-label">PCS Total</div>
-                                </div>
-                                <div class="spec-item">
-                                    <div class="spec-value">${product.pcsKrt}</div>
-                                    <div class="spec-label">PCS/KRT</div>
-                                </div>
-                            </div>
-                            
-                            <div class="product-price">
-                                <div class="price-info">Unit Price</div>
-                                <div class="price-value">€${product.price.toFixed(3)}</div>
-                            </div>
-                            
-                            <div class="product-price">
-                                <div class="price-info">Total Value</div>
-                                <div class="price-value">€${totalValue.toFixed(2)}</div>
-                            </div>
-                            
-                            <div class="product-actions">
-                                <input type="checkbox" class="select-checkbox" ${product.selected ? 'checked' : ''} onclick="event.stopPropagation(); toggleProduct(${product.id})">
-                                <button class="quick-add-btn" onclick="event.stopPropagation(); quickAdd(${product.id})">
-                                    ${product.selected ? 'Added ✓' : 'Add to Cart'}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <tr class="${product.selected ? 'selected' : ''}" onclick="selectProduct(${index}, event)" data-index="${index}">
+                        <td>
+                            <input type="checkbox" class="product-checkbox" ${product.selected ? 'checked' : ''} 
+                                   onclick="event.stopPropagation(); toggleProduct(${product.id})">
+                        </td>
+                        <td class="product-code">${product.productCode}</td>
+                        <td class="product-name">${product.name}</td>
+                        <td class="numeric-cell">${product.coliTotal}</td>
+                        <td class="numeric-cell">${product.pcsTotal.toLocaleString()}</td>
+                        <td class="numeric-cell">${product.pcsKrt}</td>
+                        <td>
+                            <span class="supplier-badge ${supplierClass}">${product.supplier}</span>
+                        </td>
+                        <td class="price-cell">€${product.price.toFixed(3)}</td>
+                        <td class="price-cell">€${totalValue.toFixed(2)}</td>
+                        <td class="numeric-cell" style="font-size: 0.7rem;">${product.supplierCode}</td>
+                    </tr>
                 `;
             }).join('');
             
             updateResultsInfo();
+            updateSelectAllCheckbox();
+        }
+
+        function selectProduct(index, event) {
+            const product = filteredProducts[index];
+            
+            if (shiftKeyPressed && lastSelectedIndex !== -1) {
+                // Range selection
+                const start = Math.min(lastSelectedIndex, index);
+                const end = Math.max(lastSelectedIndex, index);
+                
+                for (let i = start; i <= end; i++) {
+                    filteredProducts[i].selected = true;
+                }
+            } else {
+                // Single selection
+                product.selected = !product.selected;
+            }
+            
+            lastSelectedIndex = index;
+            renderProducts();
+            renderCart();
+        }
+
+        function toggleProduct(id) {
+            const product = products.find(p => p.id === id);
+            if (product) {
+                product.selected = !product.selected;
+                renderProducts();
+                renderCart();
+            }
+        }
+
+        function toggleSelectAll() {
+            const allSelected = filteredProducts.every(p => p.selected);
+            filteredProducts.forEach(p => p.selected = !allSelected);
+            renderProducts();
+            renderCart();
+        }
+
+        function updateSelectAllCheckbox() {
+            const checkbox = document.getElementById('select-all-checkbox');
+            const selectedCount = filteredProducts.filter(p => p.selected).length;
+            const totalCount = filteredProducts.length;
+            
+            if (selectedCount === 0) {
+                checkbox.checked = false;
+                checkbox.indeterminate = false;
+            } else if (selectedCount === totalCount) {
+                checkbox.checked = true;
+                checkbox.indeterminate = false;
+            } else {
+                checkbox.checked = false;
+                checkbox.indeterminate = true;
+            }
         }
 
         function updateResultsInfo() {
             const info = document.getElementById('results-info');
+            const selectionInfo = document.getElementById('selection-info');
+            const selectionCount = document.getElementById('selection-count');
+            
             const total = filteredProducts.length;
             const selected = filteredProducts.filter(p => p.selected).length;
-            info.textContent = `Showing ${total} products${selected > 0 ? ` • ${selected} selected` : ''}`;
+            
+            info.textContent = `Showing ${total} products`;
+            
+            if (selected > 0) {
+                selectionInfo.style.display = 'block';
+                selectionCount.textContent = selected;
+            } else {
+                selectionInfo.style.display = 'none';
+            }
         }
 
         function renderCart() {
@@ -856,8 +820,9 @@
                         <div class="cart-item-info">
                             <div class="cart-item-code">${product.productCode}</div>
                             <div class="cart-item-name">${product.name}</div>
+                            <div class="cart-item-qty">${product.pcsTotal.toLocaleString()} PCS</div>
                         </div>
-                        <button onclick="toggleProduct(${product.id})" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 1.2rem;">×</button>
+                        <button class="remove-btn" onclick="toggleProduct(${product.id})" title="Remove">×</button>
                     </div>
                 `).join('');
                 
@@ -868,10 +833,11 @@
                 const totalItems = selectedProducts.length;
                 const totalPcs = selectedProducts.reduce((sum, p) => sum + p.pcsTotal, 0);
                 const totalValue = selectedProducts.reduce((sum, p) => sum + (p.pcsTotal * p.price), 0);
+                const avgPrice = totalValue / totalPcs;
                 
                 document.getElementById('summary-items').textContent = totalItems;
                 document.getElementById('summary-pcs').textContent = totalPcs.toLocaleString();
-                document.getElementById('summary-value').textContent = `€${totalValue.toFixed(2)}`;
+                document.getElementById('summary-avg').textContent = `€${avgPrice.toFixed(3)}`;
                 document.getElementById('summary-total').textContent = `€${totalValue.toFixed(2)}`;
             }
             
@@ -884,24 +850,6 @@
             
             document.getElementById('cart-count').textContent = `${selectedProducts.length} items`;
             document.getElementById('cart-total').textContent = `€${totalValue.toFixed(2)}`;
-        }
-
-        function toggleProduct(id) {
-            const product = products.find(p => p.id === id);
-            if (product) {
-                product.selected = !product.selected;
-                renderProducts();
-                renderCart();
-            }
-        }
-
-        function quickAdd(id) {
-            const product = products.find(p => p.id === id);
-            if (product && !product.selected) {
-                product.selected = true;
-                renderProducts();
-                renderCart();
-            }
         }
 
         function selectAll() {
@@ -917,6 +865,7 @@
         }
 
         function selectBySupplier(supplier) {
+            clearSelection();
             products.forEach(p => {
                 if (p.supplier === supplier) {
                     p.selected = true;
@@ -931,10 +880,12 @@
             if (selectedProducts.length === 0) return;
             
             const totalValue = selectedProducts.reduce((sum, p) => sum + (p.pcsTotal * p.price), 0);
+            const totalPcs = selectedProducts.reduce((sum, p) => sum + p.pcsTotal, 0);
             
             alert(`🎉 Import Created Successfully!
-            
+
 Items: ${selectedProducts.length}
+Total PCS: ${totalPcs.toLocaleString()}
 Total Value: €${totalValue.toFixed(2)}
 Import Number: IMP-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}
 
@@ -979,6 +930,8 @@ The import order has been created and sent to procurement.`);
                         return a.supplier.localeCompare(b.supplier);
                     case 'pcs':
                         return b.pcsTotal - a.pcsTotal;
+                    case 'price':
+                        return b.price - a.price;
                     default:
                         return 0;
                 }
