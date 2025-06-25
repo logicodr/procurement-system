@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procurement System</title>
+    <title>Procurement System - B2B Shop</title>
     <style>
         * {
             margin: 0;
@@ -12,647 +12,993 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background-color: #f3f4f6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
             line-height: 1.6;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 0 20px;
         }
         
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
         
-        .login-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .logo {
-            width: 60px;
-            height: 60px;
-            background: #3b82f6;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
         
-        .login-title {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #1f2937;
-            margin-bottom: 0.5rem;
-        }
-        
-        .login-subtitle {
-            color: #6b7280;
-            margin-bottom: 2rem;
-        }
-        
-        .input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            transition: border-color 0.2s;
-        }
-        
-        .input:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-        
-        .btn {
-            background: #3b82f6;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background-color 0.2s;
-            width: 100%;
-        }
-        
-        .btn:hover {
-            background: #2563eb;
-        }
-        
-        .btn:disabled {
-            background: #9ca3af;
-            cursor: not-allowed;
-        }
-        
-        .btn-logout {
-            background: #dc2626;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 6px;
-            color: white;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-        
-        .btn-logout:hover {
-            background: #b91c1c;
-        }
-        
-        .nav {
+        .cart-summary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
             display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .nav-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            background: white;
-            color: #374151;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        
-        .nav-btn.active {
-            background: #3b82f6;
-            color: white;
-        }
-        
-        .nav-btn:hover {
-            background: #f3f4f6;
-        }
-        
-        .nav-btn.active:hover {
-            background: #2563eb;
-        }
-        
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .stats {
+        .shop-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: 280px 1fr 320px;
+            gap: 2rem;
+            padding: 2rem 0;
+            min-height: calc(100vh - 120px);
+        }
+        
+        .filters-sidebar {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .filter-section {
             margin-bottom: 2rem;
         }
         
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
+        .filter-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #374151;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.5rem 0;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .filter-option:hover {
             color: #3b82f6;
         }
         
-        .stat-label {
-            font-size: 0.9rem;
-            color: #6b7280;
-            margin-top: 0.5rem;
+        .filter-checkbox {
+            width: 16px;
+            height: 16px;
+            accent-color: #3b82f6;
         }
         
-        .table {
+        .search-bar {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+            background: #f8fafc;
         }
         
-        .table th,
-        .table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
+        .search-bar:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: white;
         }
         
-        .table th {
-            background: #16a34a;
+        .products-main {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .view-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .view-btn {
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .view-btn.active {
+            background: #3b82f6;
             color: white;
-            font-weight: 600;
+            border-color: #3b82f6;
         }
         
-        .table tr:hover {
-            background: #f9fafb;
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
         }
         
-        .table tr.selected {
-            background: #eff6ff !important;
-            border-left: 4px solid #3b82f6;
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
         
-        .badge {
-            display: inline-block;
+        .product-card {
+            background: white;
+            border: 2px solid #f1f5f9;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-card.selected {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+        }
+        
+        .product-image {
+            height: 120px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
         }
         
-        .badge-green {
+        .badge-maun {
             background: #dcfce7;
             color: #166534;
         }
         
-        .badge-red {
-            background: #fee2e2;
-            color: #991b1b;
+        .badge-simit {
+            background: #fef3c7;
+            color: #92400e;
         }
         
-        .badge-blue {
-            background: #dbeafe;
-            color: #1e40af;
+        .product-content {
+            padding: 1.5rem;
         }
         
-        .error {
-            color: #dc2626;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-        
-        .demo-info {
-            background: #f3f4f6;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .label {
-            display: block;
-            margin-bottom: 0.5rem;
+        .product-code {
+            font-size: 0.75rem;
             font-weight: 600;
-            color: #374151;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
         
-        .form-row {
+        .product-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            min-height: 2.8rem;
+        }
+        
+        .product-specs {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .spec-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .spec-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        
+        .spec-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1rem;
         }
         
-        .checkbox {
-            margin-right: 0.5rem;
+        .price-info {
+            font-size: 0.9rem;
+            color: #6b7280;
         }
         
-        .hidden {
-            display: none;
+        .price-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #059669;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .select-checkbox {
+            width: 20px;
+            height: 20px;
+            accent-color: #10b981;
+        }
+        
+        .quick-add-btn {
+            flex: 1;
+            padding: 0.75rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .quick-add-btn:hover {
+            background: #2563eb;
+        }
+        
+        .cart-sidebar {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .cart-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        
+        .cart-items {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-code {
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        
+        .cart-item-name {
+            font-size: 0.8rem;
+            color: #374151;
+            margin-top: 0.25rem;
+        }
+        
+        .cart-summary-section {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding-top: 0.5rem;
+            border-top: 2px solid #e2e8f0;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-bottom: 0.5rem;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .checkout-btn:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .bulk-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .bulk-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .bulk-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+        }
+        
+        .results-info {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            color: #6b7280;
+            font-style: italic;
+            padding: 2rem 0;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .shop-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .filters-sidebar,
+            .cart-sidebar {
+                position: static;
+            }
+            
+            .filters-sidebar {
+                order: 2;
+            }
+            
+            .cart-sidebar {
+                order: 3;
+            }
+            
+            .products-main {
+                order: 1;
+            }
         }
         
         @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
-            }
-            
-            .nav {
-                flex-direction: column;
-            }
-            
-            .container {
-                padding: 1rem;
-            }
-            
-            .table-container {
-                overflow-x: auto;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <div id="app"></div>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span>🏢</span>
+                    <span>ProCure B2B</span>
+                </div>
+                <div class="cart-summary">
+                    <span>🛒</span>
+                    <span id="cart-count">0 items</span>
+                    <span>•</span>
+                    <span id="cart-total">€0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="shop-container">
+            <!-- Filters Sidebar -->
+            <div class="filters-sidebar">
+                <div class="filter-section">
+                    <div class="filter-title">Search Products</div>
+                    <input type="text" class="search-bar" placeholder="Search by name or code..." id="search-input">
+                </div>
+                
+                <div class="filter-section">
+                    <div class="filter-title">Suppliers</div>
+                    <div class="filter-option">
+                        <input type="checkbox" class="filter-checkbox" id="filter-maun" checked>
+                        <label for="filter-maun">Maun</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" class="filter-checkbox" id="filter-simit" checked>
+                        <label for="filter-simit">Simit Sarayi</label>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <div class="filter-title">Product Categories</div>
+                    <div class="filter-option">
+                        <input type="checkbox" class="filter-checkbox" id="filter-bakery" checked>
+                        <label for="filter-bakery">Bakery Products</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" class="filter-checkbox" id="filter-pastry" checked>
+                        <label for="filter-pastry">Pastries</label>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <div class="filter-title">Quick Actions</div>
+                    <div class="bulk-actions" style="flex-direction: column;">
+                        <button class="bulk-btn" onclick="selectAll()">Select All</button>
+                        <button class="bulk-btn" onclick="clearSelection()">Clear Selection</button>
+                        <button class="bulk-btn" onclick="selectBySupplier('Maun')">Select Maun</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Main Area -->
+            <div class="products-main">
+                <div class="products-header">
+                    <div>
+                        <h2 style="margin-bottom: 0.5rem;">Product Catalog</h2>
+                        <div class="results-info" id="results-info">Showing 9 products</div>
+                    </div>
+                    <div class="view-controls">
+                        <span style="margin-right: 1rem; font-size: 0.9rem; color: #6b7280;">Sort by:</span>
+                        <select class="sort-select" id="sort-select">
+                            <option value="name">Product Name</option>
+                            <option value="code">Product Code</option>
+                            <option value="supplier">Supplier</option>
+                            <option value="pcs">PCS Total</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be rendered here -->
+                </div>
+            </div>
+
+            <!-- Cart Sidebar -->
+            <div class="cart-sidebar">
+                <div class="cart-header">
+                    <span style="font-size: 1.5rem;">🛒</span>
+                    <div>
+                        <h3>Selected Items</h3>
+                        <div style="font-size: 0.8rem; color: #6b7280;" id="cart-subtitle">Ready for import</div>
+                    </div>
+                </div>
+
+                <div class="cart-items" id="cart-items">
+                    <div class="empty-cart">
+                        Select products to add them here
+                    </div>
+                </div>
+
+                <div class="cart-summary-section" id="cart-summary" style="display: none;">
+                    <div class="summary-row">
+                        <span>Selected Items:</span>
+                        <span id="summary-items">0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total PCS:</span>
+                        <span id="summary-pcs">0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Estimated Value:</span>
+                        <span id="summary-value">€0.00</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Import Total:</span>
+                        <span id="summary-total">€0.00</span>
+                    </div>
+                </div>
+
+                <button class="checkout-btn" id="create-import-btn" onclick="createImport()" disabled>
+                    Create Import Order
+                </button>
+                
+                <div style="text-align: center; font-size: 0.8rem; color: #6b7280;">
+                    Or save as task for later processing
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Application State
-        let state = {
-            isAuthenticated: false,
-            currentView: 'dashboard',
-            products: [
-                { id: 1, productCode: 'TB-1001', name: 'Simit (cig simit)', coliTotal: 1, pcsTotal: 4800, pcsKrt: 100, supplier: 'Maun', supplierCode: '', selected: false },
-                { id: 2, productCode: 'TB-1004', name: 'Acma Oliven (Zeytinli Acma Dökme)', coliTotal: 1, pcsTotal: 5120, pcsKrt: 80, supplier: 'Simit Sa...', supplierCode: '100006434', selected: false },
-                { id: 3, productCode: 'TB-100', name: 'Croissant 90g', coliTotal: 1, pcsTotal: 6400, pcsKrt: 100, supplier: 'Simit Sa...', supplierCode: '100005720', selected: false },
-                { id: 4, productCode: 'TB-1010', name: 'Sesamring/Simit gebacken (Simit tam pismiş)', coliTotal: 0.5, pcsTotal: 1200, pcsKrt: 50, supplier: 'Maun', supplierCode: '', selected: false },
-                { id: 5, productCode: 'TB-1020', name: 'Acma Gebacken (Acma Tam Pismiş)', coliTotal: 1, pcsTotal: 1440, pcsKrt: 30, supplier: 'Maun', supplierCode: '', selected: false },
-                { id: 6, productCode: 'TB-1021', name: 'Acma Oro gebacken (Yagli Acma tam pismiş)', coliTotal: 1, pcsTotal: 1728, pcsKrt: 36, supplier: 'Maun', supplierCode: '', selected: false },
-                { id: 7, productCode: 'TB-1022', name: 'Acma Oliven (Zeytinli Acma Dökme)', coliTotal: 1, pcsTotal: 5120, pcsKrt: 80, supplier: 'Simit Sa...', supplierCode: '100006434', selected: false },
-                { id: 8, productCode: 'TB-1030', name: 'Pogaca /Käsetasche gebacken (Pogaca tam pismiş)', coliTotal: 0.4, pcsTotal: 768, pcsKrt: 40, supplier: 'Maun', supplierCode: '', selected: false },
-                { id: 9, productCode: 'TB-1031', name: 'Pogaca /Käsetasche gebacken (Pogaca pismiş Dökme)', coliTotal: 1, pcsTotal: 8000, pcsKrt: 125, supplier: 'Simit Sa...', supplierCode: '100010015', selected: false }
-            ],
-            imports: [
-                { id: 1, importNumber: 'IMP-2025-001', date: '2025-06-20', status: 'Open', totalProducts: 3, totalValue: 2580.50, supplier: 'Maun', type: 'Import' }
-            ],
-            customParams: {
-                companyName: 'Your Company Name',
-                currency: 'EUR',
-                importPrefix: 'IMP',
-                taskPrefix: 'TSK'
+        // Sample product data with pricing
+        const products = [
+            { 
+                id: 1, 
+                productCode: 'TB-1001', 
+                name: 'Simit (cig simit)', 
+                coliTotal: 1, 
+                pcsTotal: 4800, 
+                pcsKrt: 100, 
+                supplier: 'Maun', 
+                supplierCode: '', 
+                selected: false,
+                price: 0.05,
+                category: 'bakery',
+                emoji: '🥯'
+            },
+            { 
+                id: 2, 
+                productCode: 'TB-1004', 
+                name: 'Acma Oliven (Zeytinli Acma Dökme)', 
+                coliTotal: 1, 
+                pcsTotal: 5120, 
+                pcsKrt: 80, 
+                supplier: 'Simit Sarayi', 
+                supplierCode: '100006434', 
+                selected: false,
+                price: 0.08,
+                category: 'pastry',
+                emoji: '🥟'
+            },
+            { 
+                id: 3, 
+                productCode: 'TB-100', 
+                name: 'Croissant 90g', 
+                coliTotal: 1, 
+                pcsTotal: 6400, 
+                pcsKrt: 100, 
+                supplier: 'Simit Sarayi', 
+                supplierCode: '100005720', 
+                selected: false,
+                price: 0.12,
+                category: 'pastry',
+                emoji: '🥐'
+            },
+            { 
+                id: 4, 
+                productCode: 'TB-1010', 
+                name: 'Sesamring/Simit gebacken (Simit tam pismiş)', 
+                coliTotal: 0.5, 
+                pcsTotal: 1200, 
+                pcsKrt: 50, 
+                supplier: 'Maun', 
+                supplierCode: '', 
+                selected: false,
+                price: 0.06,
+                category: 'bakery',
+                emoji: '🥯'
+            },
+            { 
+                id: 5, 
+                productCode: 'TB-1020', 
+                name: 'Acma Gebacken (Acma Tam Pismiş)', 
+                coliTotal: 1, 
+                pcsTotal: 1440, 
+                pcsKrt: 30, 
+                supplier: 'Maun', 
+                supplierCode: '', 
+                selected: false,
+                price: 0.07,
+                category: 'pastry',
+                emoji: '🥟'
+            },
+            { 
+                id: 6, 
+                productCode: 'TB-1021', 
+                name: 'Acma Oro gebacken (Yagli Acma tam pismiş)', 
+                coliTotal: 1, 
+                pcsTotal: 1728, 
+                pcsKrt: 36, 
+                supplier: 'Maun', 
+                supplierCode: '', 
+                selected: false,
+                price: 0.09,
+                category: 'pastry',
+                emoji: '🥟'
+            },
+            { 
+                id: 7, 
+                productCode: 'TB-1022', 
+                name: 'Acma Oliven (Zeytinli Acma Dökme)', 
+                coliTotal: 1, 
+                pcsTotal: 5120, 
+                pcsKrt: 80, 
+                supplier: 'Simit Sarayi', 
+                supplierCode: '100006434', 
+                selected: false,
+                price: 0.08,
+                category: 'pastry',
+                emoji: '🥟'
+            },
+            { 
+                id: 8, 
+                productCode: 'TB-1030', 
+                name: 'Pogaca /Käsetasche gebacken (Pogaca tam pismiş)', 
+                coliTotal: 0.4, 
+                pcsTotal: 768, 
+                pcsKrt: 40, 
+                supplier: 'Maun', 
+                supplierCode: '', 
+                selected: false,
+                price: 0.10,
+                category: 'pastry',
+                emoji: '🧀'
+            },
+            { 
+                id: 9, 
+                productCode: 'TB-1031', 
+                name: 'Pogaca /Käsetasche gebacken (Pogaca pismiş Dökme)', 
+                coliTotal: 1, 
+                pcsTotal: 8000, 
+                pcsKrt: 125, 
+                supplier: 'Simit Sarayi', 
+                supplierCode: '100010015', 
+                selected: false,
+                price: 0.09,
+                category: 'pastry',
+                emoji: '🧀'
             }
-        };
+        ];
 
-        // Utility functions
-        function render() {
-            const app = document.getElementById('app');
-            if (!state.isAuthenticated) {
-                app.innerHTML = renderLogin();
-            } else {
-                app.innerHTML = renderMain();
-            }
-            attachEventListeners();
-        }
-
-        function renderLogin() {
-            return `
-                <div class="login-container">
-                    <div class="login-card">
-                        <div class="logo">📦</div>
-                        <h1 class="login-title">Procurement System</h1>
-                        <p class="login-subtitle">Secure Access Required</p>
-                        <div>
-                            <input type="password" id="password" class="input" placeholder="Enter your password" />
-                            <div id="error" class="error" style="display: none;"></div>
-                            <button onclick="handleLogin()" class="btn">Login</button>
-                            <div class="demo-info">
-                                <strong>Demo Password:</strong> <code>procurement2025</code>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderMain() {
-            return `
-                <div class="header">
-                    <div class="header-content">
-                        <h1>${state.customParams.companyName} - Procurement</h1>
-                        <button onclick="logout()" class="btn-logout">Logout</button>
-                    </div>
-                </div>
-                <div class="container">
-                    <nav class="nav">
-                        <button onclick="setView('dashboard')" class="nav-btn ${state.currentView === 'dashboard' ? 'active' : ''}">📊 Dashboard</button>
-                        <button onclick="setView('products')" class="nav-btn ${state.currentView === 'products' ? 'active' : ''}">📦 Products</button>
-                        <button onclick="setView('imports')" class="nav-btn ${state.currentView === 'imports' ? 'active' : ''}">📋 Imports/Tasks</button>
-                        <button onclick="setView('settings')" class="nav-btn ${state.currentView === 'settings' ? 'active' : ''}">⚙️ Settings</button>
-                    </nav>
-                    ${renderCurrentView()}
-                </div>
-            `;
-        }
-
-        function renderCurrentView() {
-            switch (state.currentView) {
-                case 'dashboard':
-                    return renderDashboard();
-                case 'products':
-                    return renderProducts();
-                case 'imports':
-                    return renderImports();
-                case 'settings':
-                    return renderSettings();
-                default:
-                    return renderDashboard();
-            }
-        }
-
-        function renderDashboard() {
-            const totalProducts = state.products.length;
-            const selectedCount = state.products.filter(p => p.selected).length;
-            const openImports = state.imports.filter(imp => imp.status === 'Open').length;
-
-            return `
-                <div class="stats">
-                    <div class="stat-card">
-                        <div class="stat-number">${totalProducts}</div>
-                        <div class="stat-label">Total Products</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">${selectedCount}</div>
-                        <div class="stat-label">Selected Products</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">${openImports}</div>
-                        <div class="stat-label">Open Imports</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">${state.imports.length}</div>
-                        <div class="stat-label">Total Imports</div>
-                    </div>
-                </div>
-                <div class="card">
-                    <h2>Welcome to the Procurement System</h2>
-                    <p>This system helps you manage products, create imports/tasks, and track your procurement process.</p>
-                    <p><strong>Quick Start:</strong></p>
-                    <ul>
-                        <li>Go to <strong>Products</strong> to view and select items</li>
-                        <li>Create <strong>Imports/Tasks</strong> from selected products</li>
-                        <li>Customize system <strong>Settings</strong> as needed</li>
-                    </ul>
-                </div>
-            `;
-        }
+        let filteredProducts = [...products];
 
         function renderProducts() {
-            const selectedCount = state.products.filter(p => p.selected).length;
-            const productRows = state.products.map(product => `
-                <tr class="${product.selected ? 'selected' : ''}" onclick="toggleProduct(${product.id})">
-                    <td><input type="checkbox" ${product.selected ? 'checked' : ''} class="checkbox" /></td>
-                    <td><strong>${product.productCode}</strong></td>
-                    <td>${product.name}</td>
-                    <td>${product.coliTotal}</td>
-                    <td>${product.pcsTotal}</td>
-                    <td>${product.pcsKrt}</td>
-                    <td><span class="badge ${product.supplier === 'Maun' ? 'badge-green' : 'badge-red'}">${product.supplier}</span></td>
-                    <td>${product.supplierCode}</td>
-                </tr>
-            `).join('');
-
-            return `
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h2>Product Catalog</h2>
-                        <div>
-                            <button onclick="selectAllProducts()" class="nav-btn">Select All</button>
-                            <button onclick="createImport()" class="btn" style="width: auto;" ${selectedCount === 0 ? 'disabled' : ''}>
-                                Create Import (${selectedCount})
-                            </button>
-                        </div>
-                    </div>
-                    <p>Click on rows to select products. Selected: <strong>${selectedCount}</strong> of ${state.products.length}</p>
-                    <div class="table-container">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Select</th>
-                                    <th>Product Code</th>
-                                    <th>Name</th>
-                                    <th>Coli Total</th>
-                                    <th>PCS/Total</th>
-                                    <th>PCS/KRT</th>
-                                    <th>Supplier</th>
-                                    <th>Supplier Code</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${productRows}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderImports() {
-            const importRows = state.imports.map(imp => `
-                <tr>
-                    <td><strong>${imp.importNumber}</strong></td>
-                    <td><span class="badge badge-blue">${imp.type}</span></td>
-                    <td>${imp.date}</td>
-                    <td>${imp.supplier}</td>
-                    <td>${imp.totalProducts}</td>
-                    <td>${state.customParams.currency} ${imp.totalValue.toFixed(2)}</td>
-                    <td><span class="badge badge-green">${imp.status}</span></td>
-                </tr>
-            `).join('');
-
-            return `
-                <div class="card">
-                    <h2>Imports & Tasks</h2>
-                    <p>Manage your procurement imports and tasks</p>
-                    <div class="table-container">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Number</th>
-                                    <th>Type</th>
-                                    <th>Date</th>
-                                    <th>Supplier</th>
-                                    <th>Products</th>
-                                    <th>Value</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${importRows}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderSettings() {
-            return `
-                <div class="card">
-                    <h2>System Settings</h2>
-                    <p>Configure your procurement system parameters</p>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="label">Company Name</label>
-                            <input type="text" class="input" value="${state.customParams.companyName}" onchange="updateParam('companyName', this.value)" />
-                        </div>
-                        <div class="form-group">
-                            <label class="label">Currency</label>
-                            <select class="input" onchange="updateParam('currency', this.value)">
-                                <option value="EUR" ${state.customParams.currency === 'EUR' ? 'selected' : ''}>EUR (€)</option>
-                                <option value="USD" ${state.customParams.currency === 'USD' ? 'selected' : ''}>USD ($)</option>
-                                <option value="GBP" ${state.customParams.currency === 'GBP' ? 'selected' : ''}>GBP (£)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="label">Import Prefix</label>
-                            <input type="text" class="input" value="${state.customParams.importPrefix}" onchange="updateParam('importPrefix', this.value)" />
-                        </div>
-                        <div class="form-group">
-                            <label class="label">Task Prefix</label>
-                            <input type="text" class="input" value="${state.customParams.taskPrefix}" onchange="updateParam('taskPrefix', this.value)" />
-                        </div>
-                    </div>
-                    <button onclick="saveSettings()" class="btn" style="width: auto;">Save Settings</button>
-                </div>
-            `;
-        }
-
-        // Event handlers
-        function handleLogin() {
-            const password = document.getElementById('password').value;
-            const errorDiv = document.getElementById('error');
+            const grid = document.getElementById('products-grid');
             
-            if (password === 'procurement2025') {
-                state.isAuthenticated = true;
-                render();
-            } else {
-                errorDiv.textContent = 'Incorrect password. Try: procurement2025';
-                errorDiv.style.display = 'block';
-                document.getElementById('password').value = '';
-            }
-        }
-
-        function logout() {
-            state.isAuthenticated = false;
-            render();
-        }
-
-        function setView(view) {
-            state.currentView = view;
-            render();
-        }
-
-        function toggleProduct(id) {
-            const product = state.products.find(p => p.id === id);
-            if (product) {
-                product.selected = !product.selected;
-                render();
-            }
-        }
-
-        function selectAllProducts() {
-            const allSelected = state.products.every(p => p.selected);
-            state.products.forEach(p => p.selected = !allSelected);
-            render();
-        }
-
-        function createImport() {
-            const selectedProducts = state.products.filter(p => p.selected);
-            if (selectedProducts.length === 0) {
-                alert('Please select at least one product');
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #6b7280;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📦</div>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your filters or search term</p>
+                    </div>
+                `;
                 return;
             }
 
-            const importNumber = `${state.customParams.importPrefix}-${new Date().getFullYear()}-${String(state.imports.length + 1).padStart(3, '0')}`;
-            const newImport = {
-                id: Date.now(),
-                importNumber,
-                date: new Date().toISOString().split('T')[0],
-                status: 'Open',
-                totalProducts: selectedProducts.length,
-                totalValue: selectedProducts.reduce((sum, item) => sum + (item.pcsTotal * 0.1), 0),
-                supplier: selectedProducts[0].supplier,
-                type: 'Import'
-            };
-
-            state.imports.push(newImport);
-            state.products.forEach(p => p.selected = false);
-            alert(`Import ${importNumber} created successfully with ${selectedProducts.length} products!`);
-            render();
+            grid.innerHTML = filteredProducts.map(product => {
+                const totalValue = product.pcsTotal * product.price;
+                const supplierClass = product.supplier === 'Maun' ? 'badge-maun' : 'badge-simit';
+                
+                return `
+                    <div class="product-card ${product.selected ? 'selected' : ''}" onclick="toggleProduct(${product.id})">
+                        <div class="product-image">
+                            <span style="font-size: 3rem;">${product.emoji}</span>
+                            <div class="product-badge ${supplierClass}">
+                                ${product.supplier}
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-code">${product.productCode}</div>
+                            <div class="product-name">${product.name}</div>
+                            
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <div class="spec-value">${product.pcsTotal.toLocaleString()}</div>
+                                    <div class="spec-label">PCS Total</div>
+                                </div>
+                                <div class="spec-item">
+                                    <div class="spec-value">${product.pcsKrt}</div>
+                                    <div class="spec-label">PCS/KRT</div>
+                                </div>
+                            </div>
+                            
+                            <div class="product-price">
+                                <div class="price-info">Unit Price</div>
+                                <div class="price-value">€${product.price.toFixed(3)}</div>
+                            </div>
+                            
+                            <div class="product-price">
+                                <div class="price-info">Total Value</div>
+                                <div class="price-value">€${totalValue.toFixed(2)}</div>
+                            </div>
+                            
+                            <div class="product-actions">
+                                <input type="checkbox" class="select-checkbox" ${product.selected ? 'checked' : ''} onclick="event.stopPropagation(); toggleProduct(${product.id})">
+                                <button class="quick-add-btn" onclick="event.stopPropagation(); quickAdd(${product.id})">
+                                    ${product.selected ? 'Added ✓' : 'Add to Cart'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            updateResultsInfo();
         }
 
-        function updateParam(key, value) {
-            state.customParams[key] = value;
+        function updateResultsInfo() {
+            const info = document.getElementById('results-info');
+            const total = filteredProducts.length;
+            const selected = filteredProducts.filter(p => p.selected).length;
+            info.textContent = `Showing ${total} products${selected > 0 ? ` • ${selected} selected` : ''}`;
         }
 
-        function saveSettings() {
-            alert('Settings saved successfully!');
-            render();
+        function renderCart() {
+            const selectedProducts = products.filter(p => p.selected);
+            const cartItems = document.getElementById('cart-items');
+            const cartSummary = document.getElementById('cart-summary');
+            const createBtn = document.getElementById('create-import-btn');
+            
+            if (selectedProducts.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Select products to add them here</div>';
+                cartSummary.style.display = 'none';
+                createBtn.disabled = true;
+            } else {
+                cartItems.innerHTML = selectedProducts.map(product => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <div class="cart-item-code">${product.productCode}</div>
+                            <div class="cart-item-name">${product.name}</div>
+                        </div>
+                        <button onclick="toggleProduct(${product.id})" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 1.2rem;">×</button>
+                    </div>
+                `).join('');
+                
+                cartSummary.style.display = 'block';
+                createBtn.disabled = false;
+                
+                // Update summary
+                const totalItems = selectedProducts.length;
+                const totalPcs = selectedProducts.reduce((sum, p) => sum + p.pcsTotal, 0);
+                const totalValue = selectedProducts.reduce((sum, p) => sum + (p.pcsTotal * p.price), 0);
+                
+                document.getElementById('summary-items').textContent = totalItems;
+                document.getElementById('summary-pcs').textContent = totalPcs.toLocaleString();
+                document.getElementById('summary-value').textContent = `€${totalValue.toFixed(2)}`;
+                document.getElementById('summary-total').textContent = `€${totalValue.toFixed(2)}`;
+            }
+            
+            updateHeaderCart();
         }
 
-        function attachEventListeners() {
-            // Handle Enter key in password field
-            const passwordField = document.getElementById('password');
-            if (passwordField) {
-                passwordField.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        handleLogin();
-                    }
-                });
+        function updateHeaderCart() {
+            const selectedProducts = products.filter(p => p.selected);
+            const totalValue = selectedProducts.reduce((sum, p) => sum + (p.pcsTotal * p.price), 0);
+            
+            document.getElementById('cart-count').textContent = `${selectedProducts.length} items`;
+            document.getElementById('cart-total').textContent = `€${totalValue.toFixed(2)}`;
+        }
+
+        function toggleProduct(id) {
+            const product = products.find(p => p.id === id);
+            if (product) {
+                product.selected = !product.selected;
+                renderProducts();
+                renderCart();
             }
         }
 
-        // Initialize app
-        render();
+        function quickAdd(id) {
+            const product = products.find(p => p.id === id);
+            if (product && !product.selected) {
+                product.selected = true;
+                renderProducts();
+                renderCart();
+            }
+        }
+
+        function selectAll() {
+            filteredProducts.forEach(p => p.selected = true);
+            renderProducts();
+            renderCart();
+        }
+
+        function clearSelection() {
+            products.forEach(p => p.selected = false);
+            renderProducts();
+            renderCart();
+        }
+
+        function selectBySupplier(supplier) {
+            products.forEach(p => {
+                if (p.supplier === supplier) {
+                    p.selected = true;
+                }
+            });
+            renderProducts();
+            renderCart();
+        }
+
+        function createImport() {
+            const selectedProducts = products.filter(p => p.selected);
+            if (selectedProducts.length === 0) return;
+            
+            const totalValue = selectedProducts.reduce((sum, p) => sum + (p.pcsTotal * p.price), 0);
+            
+            alert(`🎉 Import Created Successfully!
+            
+Items: ${selectedProducts.length}
+Total Value: €${totalValue.toFixed(2)}
+Import Number: IMP-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}
+
+The import order has been created and sent to procurement.`);
+            
+            clearSelection();
+        }
+
+        function filterProducts() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const maunChecked = document.getElementById('filter-maun').checked;
+            const simitChecked = document.getElementById('filter-simit').checked;
+            const bakeryChecked = document.getElementById('filter-bakery').checked;
+            const pastryChecked = document.getElementById('filter-pastry').checked;
+            
+            filteredProducts = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                    product.productCode.toLowerCase().includes(searchTerm);
+                
+                const matchesSupplier = (product.supplier === 'Maun' && maunChecked) || 
+                                       (product.supplier === 'Simit Sarayi' && simitChecked);
+                
+                const matchesCategory = (product.category === 'bakery' && bakeryChecked) || 
+                                       (product.category === 'pastry' && pastryChecked);
+                
+                return matchesSearch && matchesSupplier && matchesCategory;
+            });
+            
+            renderProducts();
+        }
+
+        function sortProducts() {
+            const sortBy = document.getElementById('sort-select').value;
+            
+            filteredProducts.sort((a, b) => {
+                switch (sortBy) {
+                    case 'name':
+                        return a.name.localeCompare(b.name);
+                    case 'code':
+                        return a.productCode.localeCompare(b.productCode);
+                    case 'supplier':
+                        return a.supplier.localeCompare(b.supplier);
+                    case 'pcs':
+                        return b.pcsTotal - a.pcsTotal;
+                    default:
+                        return 0;
+                }
+            });
+            
+            renderProducts();
+        }
+
+        // Event listeners
+        document.getElementById('search-input').addEventListener('input', filterProducts);
+        document.getElementById('sort-select').addEventListener('change', sortProducts);
+        
+        // Filter checkboxes
+        ['filter-maun', 'filter-simit', 'filter-bakery', 'filter-pastry'].forEach(id => {
+            document.getElementById(id).addEventListener('change', filterProducts);
+        });
+
+        // Initial render
+        renderProducts();
+        renderCart();
     </script>
 </body>
 </html>
