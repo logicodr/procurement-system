@@ -301,6 +301,25 @@
             line-height: 1;
         }
         
+        .spec-input {
+            width: 100%;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #3b82f6;
+            line-height: 1;
+            background: transparent;
+            border: none;
+            text-align: center;
+            padding: 0.25rem;
+            border-radius: 4px;
+        }
+        
+        .spec-input:focus {
+            outline: none;
+            background: white;
+            border: 1px solid #3b82f6;
+        }
+        
         .spec-label {
             font-size: 0.65rem;
             color: #6b7280;
@@ -707,7 +726,7 @@
                         <span id="summary-lines">0</span>
                     </div>
                     <div class="summary-row">
-                        <span>Total Quantity:</span>
+                        <span>Total Coli:</span>
                         <span id="summary-quantity">0</span>
                     </div>
                     <div class="summary-row">
@@ -725,7 +744,7 @@
                 </button>
                 
                 <div style="text-align: center; font-size: 0.8rem; color: #6b7280;">
-                    💡 Tip: Set quantities and add to cart
+                    💡 Tip: Edit Coli directly or use quantity multiplier
                 </div>
             </div>
         </div>
@@ -734,15 +753,15 @@
     <script>
         // Sample product data
         const products = [
-            { id: 1, productCode: 'TB-1001', name: 'Simit (cig simit)', coliTotal: 1, pcsTotal: 4800, pcsKrt: 100, supplier: 'Maun', supplierCode: '', selected: false, price: 0.048, category: 'bakery', emoji: '🥯', quantity: 1 },
-            { id: 2, productCode: 'TB-1004', name: 'Acma Oliven (Zeytinli Acma Dökme)', coliTotal: 1, pcsTotal: 5120, pcsKrt: 80, supplier: 'Simit Sarayi', supplierCode: '100006434', selected: false, price: 0.072, category: 'pastry', emoji: '🥟', quantity: 1 },
-            { id: 3, productCode: 'TB-100', name: 'Croissant 90g', coliTotal: 1, pcsTotal: 6400, pcsKrt: 100, supplier: 'Simit Sarayi', supplierCode: '100005720', selected: false, price: 0.095, category: 'pastry', emoji: '🥐', quantity: 1 },
-            { id: 4, productCode: 'TB-1010', name: 'Sesamring/Simit gebacken (Simit tam pismiş)', coliTotal: 0.5, pcsTotal: 1200, pcsKrt: 50, supplier: 'Maun', supplierCode: '', selected: false, price: 0.055, category: 'bakery', emoji: '🥯', quantity: 1 },
-            { id: 5, productCode: 'TB-1020', name: 'Acma Gebacken (Acma Tam Pismiş)', coliTotal: 1, pcsTotal: 1440, pcsKrt: 30, supplier: 'Maun', supplierCode: '', selected: false, price: 0.063, category: 'pastry', emoji: '🥟', quantity: 1 },
-            { id: 6, productCode: 'TB-1021', name: 'Acma Oro gebacken (Yagli Acma tam pismiş)', coliTotal: 1, pcsTotal: 1728, pcsKrt: 36, supplier: 'Maun', supplierCode: '', selected: false, price: 0.078, category: 'pastry', emoji: '🥟', quantity: 1 },
-            { id: 7, productCode: 'TB-1022', name: 'Acma Oliven (Zeytinli Acma Dökme)', coliTotal: 1, pcsTotal: 5120, pcsKrt: 80, supplier: 'Simit Sarayi', supplierCode: '100006434', selected: false, price: 0.072, category: 'pastry', emoji: '🥟', quantity: 1 },
-            { id: 8, productCode: 'TB-1030', name: 'Pogaca /Käsetasche gebacken (Pogaca tam pismiş)', coliTotal: 0.4, pcsTotal: 768, pcsKrt: 40, supplier: 'Maun', supplierCode: '', selected: false, price: 0.089, category: 'pastry', emoji: '🧀', quantity: 1 },
-            { id: 9, productCode: 'TB-1031', name: 'Pogaca /Käsetasche gebacken (Pogaca pismiş Dökme)', coliTotal: 1, pcsTotal: 8000, pcsKrt: 125, supplier: 'Simit Sarayi', supplierCode: '100010015', selected: false, price: 0.081, category: 'pastry', emoji: '🧀', quantity: 1 }
+            { id: 1, productCode: 'TB-1001', name: 'Simit (cig simit)', coliTotal: 1, pcsTotal: 4800, pcsKrt: 100, supplier: 'Maun', supplierCode: '', selected: false, price: 0.048, category: 'bakery', emoji: '🥯', quantity: 1.0 },
+            { id: 2, productCode: 'TB-1004', name: 'Acma Oliven (Zeytinli Acma Dökme)', coliTotal: 1, pcsTotal: 5120, pcsKrt: 80, supplier: 'Simit Sarayi', supplierCode: '100006434', selected: false, price: 0.072, category: 'pastry', emoji: '🥟', quantity: 1.0 },
+            { id: 3, productCode: 'TB-100', name: 'Croissant 90g', coliTotal: 1, pcsTotal: 6400, pcsKrt: 100, supplier: 'Simit Sarayi', supplierCode: '100005720', selected: false, price: 0.095, category: 'pastry', emoji: '🥐', quantity: 1.0 },
+            { id: 4, productCode: 'TB-1010', name: 'Sesamring/Simit gebacken (Simit tam pismiş)', coliTotal: 0.5, pcsTotal: 1200, pcsKrt: 50, supplier: 'Maun', supplierCode: '', selected: false, price: 0.055, category: 'bakery', emoji: '🥯', quantity: 1.0 },
+            { id: 5, productCode: 'TB-1020', name: 'Acma Gebacken (Acma Tam Pismiş)', coliTotal: 1, pcsTotal: 1440, pcsKrt: 30, supplier: 'Maun', supplierCode: '', selected: false, price: 0.063, category: 'pastry', emoji: '🥟', quantity: 1.0 },
+            { id: 6, productCode: 'TB-1021', name: 'Acma Oro gebacken (Yagli Acma tam pismiş)', coliTotal: 1, pcsTotal: 1728, pcsKrt: 36, supplier: 'Maun', supplierCode: '', selected: false, price: 0.078, category: 'pastry', emoji: '🥟', quantity: 1.0 },
+            { id: 7, productCode: 'TB-1022', name: 'Acma Oliven (Zeytinli Acma Dökme)', coliTotal: 1, pcsTotal: 5120, pcsKrt: 80, supplier: 'Simit Sarayi', supplierCode: '100006434', selected: false, price: 0.072, category: 'pastry', emoji: '🥟', quantity: 1.0 },
+            { id: 8, productCode: 'TB-1030', name: 'Pogaca /Käsetasche gebacken (Pogaca tam pismiş)', coliTotal: 0.4, pcsTotal: 768, pcsKrt: 40, supplier: 'Maun', supplierCode: '', selected: false, price: 0.089, category: 'pastry', emoji: '🧀', quantity: 1.0 },
+            { id: 9, productCode: 'TB-1031', name: 'Pogaca /Käsetasche gebacken (Pogaca pismiş Dökme)', coliTotal: 1, pcsTotal: 8000, pcsKrt: 125, supplier: 'Simit Sarayi', supplierCode: '100010015', selected: false, price: 0.081, category: 'pastry', emoji: '🧀', quantity: 1.0 }
         ];
 
         // Cart items (separate from product selection)
@@ -784,11 +803,14 @@
                             
                             <div class="product-specs">
                                 <div class="spec-item">
-                                    <div class="spec-value">${product.coliTotal}</div>
+                                    <input type="number" class="spec-input" value="${(product.coliTotal * product.quantity).toFixed(1)}" 
+                                           step="0.5" min="0.5" max="99"
+                                           onchange="updateColiQuantity(${product.id}, this.value)"
+                                           onclick="event.stopPropagation()">
                                     <div class="spec-label">Coli</div>
                                 </div>
                                 <div class="spec-item">
-                                    <div class="spec-value">${product.pcsTotal.toLocaleString()}</div>
+                                    <div class="spec-value">${(product.pcsTotal * product.quantity).toLocaleString()}</div>
                                     <div class="spec-label">PCS Total</div>
                                 </div>
                                 <div class="spec-item">
@@ -804,12 +826,13 @@
                                 </div>
                                 <div class="price-item">
                                     <div class="price-label">Total Value</div>
-                                    <div class="price-value">€${totalValue.toFixed(2)}</div>
+                                    <div class="price-value">€${(totalValue * product.quantity).toFixed(2)}</div>
                                 </div>
                             </div>
                             
                             <div class="product-actions">
-                                <input type="number" class="quantity-input" value="${product.quantity}" min="1" max="99" 
+                                <input type="number" class="quantity-input" value="${product.quantity}" 
+                                       step="0.5" min="0.5" max="99" 
                                        onchange="updateProductQuantity(${product.id}, this.value)"
                                        onclick="event.stopPropagation()">
                                 <button class="add-to-cart-btn ${isInCart ? 'added' : ''}" 
@@ -856,7 +879,7 @@
         function updateProductQuantity(id, quantity) {
             const product = products.find(p => p.id === id);
             if (product) {
-                product.quantity = Math.max(1, parseInt(quantity) || 1);
+                product.quantity = Math.max(0.5, parseFloat(quantity) || 0.5);
                 
                 // Update cart item if it exists
                 const cartItem = cartItems.find(item => item.id === id);
@@ -864,6 +887,28 @@
                     cartItem.quantity = product.quantity;
                     renderCart();
                 }
+                
+                renderProducts(); // Re-render to show updated calculations
+            }
+        }
+
+        function updateColiQuantity(id, coliValue) {
+            const product = products.find(p => p.id === id);
+            if (product) {
+                const newColiValue = Math.max(0.5, parseFloat(coliValue) || 0.5);
+                
+                // Calculate quantity based on coli input
+                // If user enters 2 coli and base is 1 coli, quantity should be 2
+                product.quantity = newColiValue / product.coliTotal;
+                
+                // Update cart item if it exists
+                const cartItem = cartItems.find(item => item.id === id);
+                if (cartItem) {
+                    cartItem.quantity = product.quantity;
+                    renderCart();
+                }
+                
+                renderProducts(); // Re-render to show updated calculations
             }
         }
 
@@ -901,7 +946,7 @@
         function updateCartQuantity(id, quantity) {
             const cartItem = cartItems.find(item => item.id === id);
             if (cartItem) {
-                cartItem.quantity = Math.max(1, parseInt(quantity) || 1);
+                cartItem.quantity = Math.max(0.5, parseFloat(quantity) || 0.5);
                 
                 // Also update product quantity
                 const product = products.find(p => p.id === id);
@@ -927,16 +972,18 @@
                 cartItemsDiv.innerHTML = cartItems.map(item => {
                     const totalValue = item.quantity * item.pcsTotal * item.price;
                     const totalPcs = item.quantity * item.pcsTotal;
+                    const totalColi = item.quantity; // Since item.quantity represents the coli multiplier
                     
                     return `
                         <div class="cart-item">
                             <div class="cart-item-info">
                                 <div class="cart-item-code">${item.productCode}</div>
                                 <div class="cart-item-name">${item.name}</div>
-                                <div class="cart-item-details">${totalPcs.toLocaleString()} PCS • €${totalValue.toFixed(2)}</div>
+                                <div class="cart-item-details">${totalColi.toFixed(1)} Coli • ${totalPcs.toLocaleString()} PCS • €${totalValue.toFixed(2)}</div>
                             </div>
                             <div class="cart-item-actions">
-                                <input type="number" class="cart-quantity-input" value="${item.quantity}" min="1" max="99"
+                                <input type="number" class="cart-quantity-input" value="${item.quantity}" 
+                                       step="0.5" min="0.5" max="99"
                                        onchange="updateCartQuantity(${item.id}, this.value)">
                                 <button class="remove-btn" onclick="removeFromCart(${item.id})" title="Remove">×</button>
                             </div>
@@ -949,12 +996,12 @@
                 
                 // Update summary
                 const totalLines = cartItems.length;
-                const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+                const totalColi = cartItems.reduce((sum, item) => sum + item.quantity, 0);
                 const totalPcs = cartItems.reduce((sum, item) => sum + (item.quantity * item.pcsTotal), 0);
                 const totalValue = cartItems.reduce((sum, item) => sum + (item.quantity * item.pcsTotal * item.price), 0);
                 
                 document.getElementById('summary-lines').textContent = totalLines;
-                document.getElementById('summary-quantity').textContent = totalQuantity;
+                document.getElementById('summary-quantity').textContent = totalColi.toFixed(1);
                 document.getElementById('summary-pcs').textContent = totalPcs.toLocaleString();
                 document.getElementById('summary-total').textContent = `€${totalValue.toFixed(2)}`;
             }
@@ -964,9 +1011,9 @@
 
         function updateHeaderCart() {
             const totalValue = cartItems.reduce((sum, item) => sum + (item.quantity * item.pcsTotal * item.price), 0);
-            const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            const totalColi = cartItems.reduce((sum, item) => sum + item.quantity, 0);
             
-            document.getElementById('cart-count').textContent = `${totalItems} items`;
+            document.getElementById('cart-count').textContent = `${totalColi.toFixed(1)} Coli`;
             document.getElementById('cart-total').textContent = `€${totalValue.toFixed(2)}`;
         }
 
@@ -1013,12 +1060,12 @@
             
             const totalValue = cartItems.reduce((sum, item) => sum + (item.quantity * item.pcsTotal * item.price), 0);
             const totalPcs = cartItems.reduce((sum, item) => sum + (item.quantity * item.pcsTotal), 0);
-            const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            const totalColi = cartItems.reduce((sum, item) => sum + item.quantity, 0);
             
             alert(`🎉 Import Created Successfully!
 
 Product Lines: ${cartItems.length}
-Total Quantity: ${totalQuantity}
+Total Coli: ${totalColi.toFixed(1)}
 Total PCS: ${totalPcs.toLocaleString()}
 Total Value: €${totalValue.toFixed(2)}
 Import Number: IMP-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}
